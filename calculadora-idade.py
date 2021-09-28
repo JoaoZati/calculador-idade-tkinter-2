@@ -15,7 +15,7 @@ class CalculadoraIdade:
         self.window.resizable(0, 0)
 
         self.frame_cima = self.frame_cima()
-        self.frame_baixo = self.frame_baixo()
+        self.frame_baixo, self.cal_1, self.cal_2 = self.frame_baixo()
 
     def frame_cima(self):
         frame_cima = tk.Frame(self.window, width=310, height=140, pady=0, padx=0,
@@ -72,7 +72,17 @@ class CalculadoraIdade:
                                        padx=0, pady=0, anchor='center', font=("Arial", 11), bg=COR2, fg="White")
         label_app_dias_nome.place(x=220, y=180)
 
-        return frame_baixo
+        button_calcular = tk.Button(frame_baixo, text='Calcular', height=1, width=20, relief='raised', font=('Arial', 10),
+                                    overrelief='ridge', bg=COR2, fg='White')
+        button_calcular.place(x=70, y=225)
+
+        return frame_baixo, calendario_1, calendario_2
+
+    def calcular_idade(self):
+        data_incial = self.cal_1.get()
+        data_final = self.cal_2.get()
+
+        print(data_incial, data_final)
 
     def run(self):
         self.window.mainloop()
