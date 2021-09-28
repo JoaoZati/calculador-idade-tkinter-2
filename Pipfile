@@ -5,6 +5,7 @@ name = "pypi"
 
 [packages]
 tkcalendar = "*"
+python-dateutil = "*"
 
 [dev-packages]
 

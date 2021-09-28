@@ -1,6 +1,8 @@
 import tkinter as tk
 from tkinter import ttk
 from tkcalendar import Calendar, DateEntry
+from datetime import datetime
+from dateutil.relativedelta import relativedelta
 
 COR1 = '#3b3b3b'
 COR2 = '#333333'
@@ -45,10 +47,10 @@ class CalculadoraIdade:
         label_data_nascimento.place(x=30, y=70)
 
         calendario_1 = DateEntry(frame_baixo, width=10, bg='darkblue', fg='White', borderwidth=2,
-                                 data_patter='dd/mm/yy')
+                                 date_pattern='dd/mm/yyyy')
         calendario_1.place(x=180, y=30)
         calendario_2 = DateEntry(frame_baixo, width=10, bg='darkblue', fg='White', borderwidth=2,
-                                 data_patter='dd/mm/yy')
+                                 date_pattern='dd/mm/yyyy')
         calendario_2.place(x=180, y=70)
 
         label_app_anos = tk.Label(frame_baixo, text="27", height=1, relief=tk.FLAT,
@@ -80,10 +82,21 @@ class CalculadoraIdade:
         return frame_baixo, calendario_1, calendario_2
 
     def calcular_idade(self):
-        data_incial = self.cal_1.get()
-        data_final = self.cal_2.get()
+        data_inicial = self.cal_1.get()
+        dia_inicial, mes_inicial, ano_inicial = [int(i) for i in data_inicial.split('/')]
+        datetime_inicial = datetime(ano_inicial, mes_inicial, dia_inicial)
 
-        print(data_incial, data_final)
+        data_final = self.cal_2.get()
+        dia_final, mes_final, ano_final = [int(i) for i in data_final.split('/')]
+        datetime_final = datetime(ano_final, mes_final, dia_final)
+
+        anos = relativedelta(datetime_inicial, datetime_final).years
+        meses = relativedelta(datetime_inicial, datetime_final).months
+        dias = relativedelta(datetime_inicial, datetime_final).days
+
+        print(datetime_inicial)
+        print(datetime_final)
+        print(anos, meses, dias)
 
     def run(self):
         self.window.mainloop()
