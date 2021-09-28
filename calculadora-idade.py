@@ -40,7 +40,6 @@ class CalculadoraIdade:
         label_data_atual = tk.Label(frame_baixo, text="Data Atual:", height=1, relief=tk.FLAT,
                                     padx=0, pady=0, anchor='nw', font=("Arial", 11), bg=COR2, fg="White")
         label_data_atual.place(x=30, y=30)
-
         label_data_nascimento = tk.Label(frame_baixo, text="Data de nascimento:", height=1, relief=tk.FLAT,
                                          padx=0, pady=0, anchor='nw', font=("Arial", 11), bg=COR2, fg="White")
         label_data_nascimento.place(x=30, y=70)
@@ -48,10 +47,30 @@ class CalculadoraIdade:
         calendario_1 = DateEntry(frame_baixo, width=10, bg='darkblue', fg='White', borderwidth=2,
                                  data_patter='dd/mm/yy')
         calendario_1.place(x=180, y=30)
-
         calendario_2 = DateEntry(frame_baixo, width=10, bg='darkblue', fg='White', borderwidth=2,
                                  data_patter='dd/mm/yy')
         calendario_2.place(x=180, y=70)
+
+        label_app_anos = tk.Label(frame_baixo, text="27", height=1, relief=tk.FLAT,
+                                  padx=0, pady=0, anchor='center', font=("Arial", 25), bg=COR2, fg="White")
+        label_app_anos.place(x=60, y=135)
+        label_app_anos_nome = tk.Label(frame_baixo, text="Anos", height=1, relief=tk.FLAT,
+                                       padx=0, pady=0, anchor='center', font=("Arial", 11), bg=COR2, fg="White")
+        label_app_anos_nome.place(x=60, y=180)
+
+        label_app_meses = tk.Label(frame_baixo, text="27", height=1, relief=tk.FLAT,
+                                   padx=0, pady=0, anchor='center', font=("Arial", 25), bg=COR2, fg="White")
+        label_app_meses.place(x=140, y=135)
+        label_app_meses_nome = tk.Label(frame_baixo, text="Meses", height=1, relief=tk.FLAT,
+                                        padx=0, pady=0, anchor='center', font=("Arial", 11), bg=COR2, fg="White")
+        label_app_meses_nome.place(x=140, y=180)
+
+        label_app_dias = tk.Label(frame_baixo, text="27", height=1, relief=tk.FLAT,
+                                  padx=0, pady=0, anchor='center', font=("Arial", 25), bg=COR2, fg="White")
+        label_app_dias.place(x=220, y=135)
+        label_app_dias_nome = tk.Label(frame_baixo, text="Dias", height=1, relief=tk.FLAT,
+                                       padx=0, pady=0, anchor='center', font=("Arial", 11), bg=COR2, fg="White")
+        label_app_dias_nome.place(x=220, y=180)
 
         return frame_baixo
 
