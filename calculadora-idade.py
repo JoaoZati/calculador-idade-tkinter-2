@@ -17,7 +17,7 @@ class CalculadoraIdade:
         self.window.resizable(0, 0)
 
         self.frame_cima = self.frame_cima()
-        self.frame_baixo, self.cal_1, self.cal_2 = self.frame_baixo()
+        self.frame_baixo, self.cal_1, self.cal_2, self.output_dias, self.output_meses, self.output_anos = self.frame_baixo()
 
     def frame_cima(self):
         frame_cima = tk.Frame(self.window, width=310, height=140, pady=0, padx=0,
@@ -53,21 +53,21 @@ class CalculadoraIdade:
                                  date_pattern='dd/mm/yyyy')
         calendario_2.place(x=180, y=70)
 
-        label_app_anos = tk.Label(frame_baixo, text="27", height=1, relief=tk.FLAT,
+        label_app_anos = tk.Label(frame_baixo, text="0", height=1, relief=tk.FLAT,
                                   padx=0, pady=0, anchor='center', font=("Arial", 25), bg=COR2, fg="White")
         label_app_anos.place(x=60, y=135)
         label_app_anos_nome = tk.Label(frame_baixo, text="Anos", height=1, relief=tk.FLAT,
                                        padx=0, pady=0, anchor='center', font=("Arial", 11), bg=COR2, fg="White")
         label_app_anos_nome.place(x=60, y=180)
 
-        label_app_meses = tk.Label(frame_baixo, text="27", height=1, relief=tk.FLAT,
+        label_app_meses = tk.Label(frame_baixo, text="0", height=1, relief=tk.FLAT,
                                    padx=0, pady=0, anchor='center', font=("Arial", 25), bg=COR2, fg="White")
         label_app_meses.place(x=140, y=135)
         label_app_meses_nome = tk.Label(frame_baixo, text="Meses", height=1, relief=tk.FLAT,
                                         padx=0, pady=0, anchor='center', font=("Arial", 11), bg=COR2, fg="White")
         label_app_meses_nome.place(x=140, y=180)
 
-        label_app_dias = tk.Label(frame_baixo, text="27", height=1, relief=tk.FLAT,
+        label_app_dias = tk.Label(frame_baixo, text="0", height=1, relief=tk.FLAT,
                                   padx=0, pady=0, anchor='center', font=("Arial", 25), bg=COR2, fg="White")
         label_app_dias.place(x=220, y=135)
         label_app_dias_nome = tk.Label(frame_baixo, text="Dias", height=1, relief=tk.FLAT,
@@ -79,7 +79,7 @@ class CalculadoraIdade:
                                     command=self.calcular_idade)
         button_calcular.place(x=70, y=225)
 
-        return frame_baixo, calendario_1, calendario_2
+        return frame_baixo, calendario_1, calendario_2, label_app_dias, label_app_meses, label_app_anos
 
     def calcular_idade(self):
         data_inicial = self.cal_1.get()
@@ -94,9 +94,9 @@ class CalculadoraIdade:
         meses = relativedelta(datetime_inicial, datetime_final).months
         dias = relativedelta(datetime_inicial, datetime_final).days
 
-        print(datetime_inicial)
-        print(datetime_final)
-        print(anos, meses, dias)
+        self.output_dias.config(text=dias)
+        self.output_meses.config(text=meses)
+        self.output_anos.config(text=anos)
 
     def run(self):
         self.window.mainloop()
