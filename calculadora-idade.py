@@ -73,7 +73,8 @@ class CalculadoraIdade:
         label_app_dias_nome.place(x=220, y=180)
 
         button_calcular = tk.Button(frame_baixo, text='Calcular', height=1, width=20, relief='raised', font=('Arial', 10),
-                                    overrelief='ridge', bg=COR2, fg='White')
+                                    overrelief='ridge', bg=COR2, fg='White',
+                                    command=self.calcular_idade)
         button_calcular.place(x=70, y=225)
 
         return frame_baixo, calendario_1, calendario_2
